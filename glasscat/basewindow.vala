@@ -202,7 +202,7 @@ public abstract class BaseWindow : Gtk.Window
 			"license", "Glasscat is free software; you can redistribute it and/or modify \nit under the terms of the GNU General Public License as published by \nthe Free Software Foundation; either version 2 of the License, or \n(at your option) any later version.\n\nGlasscat is distributed in the hope that it will be useful, \nbut WITHOUT ANY WARRANTY; without even the implied warranty of \nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the \nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License \nalong with Glasscat; if not, write to the Free Software Foundation, Inc., \n51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA",
 			"comments", "Text editor with attitude",
 			"copyright", "Copyright © 2006-2008 Daniel Borgmann",
-			"website", "http://dborg.wordpress.com/scratchpad/",
+			"website", "http://www.glasscat.org/",
 			"website-label", "Visit the Glasscat Homepage"
 		);
 	}
