@@ -6,6 +6,6 @@ Exec=glasscat
 Terminal=false
 Type=Application
 StartupNotify=true
-MimeType=text/plain;
+MimeType=text/plain;application/x-glasscat-project;
 Icon=glasscat
 Categories=Application;Utility;TextEditor;

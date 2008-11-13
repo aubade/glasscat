@@ -1,4 +1,9 @@
-2008-11-11  Daniel Borgmann  <danielb@openismus.com>
+2008-11-13  Daniel Borgmann  <daniel.borgmann@gmail.com>
+
+	* data/Makefile.am:
+	* data/glasscat.desktop: Install custom mime-type
+
+2008-11-11  Daniel Borgmann  <daniel.borgmann@gmail.com>
 
 	* scratchpad/uimanager.vala: Kill the clutter
 
