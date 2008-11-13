@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Glasscat Text Editor
+Comment=Create and edit source code projects
+Exec=glasscat
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Icon=glasscat
+Categories=Application;Utility;TextEditor;
