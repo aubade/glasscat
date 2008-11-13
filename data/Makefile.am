@@ -1,4 +1,7 @@
-schemasdir	 = $(GCONF_SCHEMA_FILE_DIR)
+mimedir = $(datadir)/mime/packages
+mime_DATA = glasscat-mime.xml
+
+schemasdir   = $(GCONF_SCHEMA_FILE_DIR)
 schemas_DATA = glasscat.schemas
 
 icon16dir = $(datadir)/icons/hicolor/16x16/apps
@@ -12,6 +15,8 @@ icon_DATA = scalable/glasscat.svg
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
 install-data-hook:
+		update-mime-database $(datadir)/mime
+
 		@-if test -z "$(DESTDIR)"; then \
 				echo "Updating Gtk icon cache."; \
 				$(gtk_update_icon_cache); \
@@ -26,8 +31,8 @@ desktop_DATA = glasscat.desktop
 NULL =
 
 uidir = $(pkgdatadir)
-ui_DATA =				\
-	glasscat-ui.xml	\
+ui_DATA =               \
+	glasscat-ui.xml \
 	$(NULL)
 
 if GCONF_SCHEMAS_INSTALL
@@ -41,12 +46,13 @@ else
 install-data-local:
 endif
 
-EXTRA_DIST =		\
-	$(schemas_DATA)	\
-	$(icon16_DATA)	\
-	$(icon24_DATA)	\
-	$(icon32_DATA)	\
-	$(icon_DATA)	\
-	$(desktop_DATA)	\
-	$(ui_DATA)		\
+EXTRA_DIST =            \
+	$(mime_DATA)    \
+	$(schemas_DATA) \
+	$(icon16_DATA)  \
+	$(icon24_DATA)  \
+	$(icon32_DATA)  \
+	$(icon_DATA)    \
+	$(desktop_DATA) \
+	$(ui_DATA)      \
 	$(NULL)
