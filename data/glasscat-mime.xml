@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 	<mime-type type="application/x-glasscat-project">
+		<sub-class-of type="text/plain"/>
 		<comment>Glasscat Project</comment>
-		<magic priority="50">
-			<match value="#!gcProject" type="string" offset="0:11"/>
+		<magic priority="100">
+			<match value="#!gcProject" type="string" offset="0"/>
 		</magic>
 	<glob pattern="*.gcproject"/>
 	</mime-type>
