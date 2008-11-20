@@ -3,9 +3,9 @@ using Gtk;
 
 public class BufferList : TreeView {
 
-	ProjectWindow window;
+	//ProjectWindow window;
 	//Project project;
-	ListStore store;
+	//ListStore store;
 	TreeViewColumn main_column;
 	
 	public BufferList (ProjectWindow win) {

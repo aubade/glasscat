@@ -99,13 +99,14 @@ public class Application : GLib.Object
 		
 		if (response == ResponseType.ACCEPT) {
 			dialog.hide ();
-			stdout.printf ("%s\n", dialog.get_uri ());
 		
 			this.win_count = this.win_count + 1;
 			var w = new ProjectWindow (dialog.get_uri ());
 			w.show_all ();
 			window_list.append (w);
 			w.destroy += w => { window_list.remove (w); win_count = win_count - 1; };
+		} else {
+			dialog.hide ();
 		}
 	}
 	

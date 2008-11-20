@@ -28,7 +28,6 @@ public class DocumentView : SourceView
 	}
 
 	private SList<Tag> tag_list;
-	private bool modified;
 
 	public DocumentView () {}
 	public DocumentView.with_document (Document document) {
@@ -37,7 +36,7 @@ public class DocumentView : SourceView
 
 	construct {
 		modify_font (FontDescription.from_string (SystemSettings.get_font ()));
-		//GConf.Client.get_default().notify_add ("/desktop/gnome/interface/monospace_font_name", on_font_changed);
+		GConf.Client.get_default().notify_add ("/desktop/gnome/interface/monospace_font_name", on_font_changed);
 	
 		this.tab_width = 8;
 		this.insert_spaces_instead_of_tabs = false;
@@ -88,7 +87,7 @@ public class DocumentView : SourceView
 	
 		TextIter match;
 		TextIter match_end;
-		SourceSearchFlags search_flags;
+		SourceSearchFlags search_flags = 0;
 		bool wrapped = false;
 		bool found = false;
 		
@@ -258,7 +257,6 @@ public class DocumentView : SourceView
 		TextIter iter;
 		unichar ichar;
 		StringBuilder indent = new StringBuilder ("");
-		string tmp;
 		// save the indentation of the current line
 		document.get_iter_at_mark (out iter, document.get_insert ());
 		iter.set_line_offset (0);
@@ -319,7 +317,7 @@ public class DocumentView : SourceView
 		os = s.get_offset ();
 		oe = e.get_offset ();
 		
-		SList<Tag> tmp_list;
+		SList<Tag> tmp_list = new SList<Tag> ();
 		foreach (Tag tag in tag_list) {
 			document.get_iter_at_mark (out s, tag.begin);
 			document.get_iter_at_mark (out e, tag.end);
@@ -330,7 +328,7 @@ public class DocumentView : SourceView
 				tmp_list.append (tag);
 			}
 		}
-		tag_list = #tmp_list;
+		tag_list = tmp_list.copy ();
 		
 		update_tags ();
 	}
@@ -364,14 +362,14 @@ public class DocumentView : SourceView
 		
 		document.get_bounds (out s, out e);
 		document.remove_tag_by_name ("tag", s, e);
-		foreach (Tag tag in tag_list) {
+		foreach (Tag tag in this.tag_list) {
 			document.get_iter_at_mark (out s, tag.begin);
 			document.get_iter_at_mark (out e, tag.end);
 			document.apply_tag_by_name ("tag", s, e);
 		}
 	}
 	
-	private void on_font_changed (uint cnxn_id, GConf.Entry entry) {
+	private void on_font_changed (GConf.Client client, uint cnxn_id, GConf.Entry entry) {
 		stdout.printf ("font changed\n");
 	}
 	

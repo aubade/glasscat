@@ -17,7 +17,6 @@ public abstract class BaseWindow : Gtk.Window
 	protected UIManager ui_manager;
 	protected HPaned pane;
 	
-	private AboutDialog about_dialog;
 	private HBox searchbar;
 	private SearchEntry searchentry;
 	private Statusbar statusbar;
@@ -300,8 +299,6 @@ public abstract class BaseWindow : Gtk.Window
 	}
 	
 	private void on_action_activated (GLib.Object o, Action action) {
-		ToggleAction ta;
-	
 		// TODO: replace with switch statement once it works with strings
 		/* File menu */
 		if ( action.name == "open-folder" ) {

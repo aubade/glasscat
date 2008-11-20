@@ -7,7 +7,6 @@ public class Document : SourceBuffer
 	
 	private string file_name;
 	private string mime_type;
-	private string modified;
 	
 	public MetadataManager metadata { get; set; }
 
