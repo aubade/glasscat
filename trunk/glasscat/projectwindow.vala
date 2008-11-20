@@ -18,7 +18,10 @@ public class ProjectWindow : BaseWindow
 	private ProjectTree project_tree;
 	
 	const TargetEntry[] targets = {
-		{ "STRING", 0, 0 }
+		{ "STRING", 0, 0 },
+		{ "text/plain", 0, 0},
+		{ "text/uri-list", 0, 0}
+		
 	};
 	
 	public ProjectWindow (string uri) {
@@ -90,7 +93,7 @@ public class ProjectWindow : BaseWindow
 		pane.add1 (vbox2);
 	}
 	
-	void on_drag_data_received () {
-		stdout.printf ("drag data received\n");
+	void on_drag_data_received (ProjectWindow win, Gdk.DragContext context, int x, int y, Gtk.SelectionData selection_data, uint info, uint time_) {
+		stdout.printf ("drag data received: %s\n", selection_data.get_text ());
 	}
 }
