@@ -1,3 +1,16 @@
+2008-11-20  Daniel Borgmann  <daniel@daniel-laptop>
+
+	* glasscat/application.vala:
+	* glasscat/basewindow.vala:
+	* glasscat/bufferlist.vala:
+	* glasscat/document.vala:
+	* glasscat/documentview.vala:
+	* glasscat/metadata.vala:
+
+	Fixes for Vala SVN, remove unused variables.
+
+	* glasscat/projectwindow.vala: Set up drag destination.
+
 2008-11-13  Daniel Borgmann  <daniel.borgmann@gmail.com>
 
 	* data/Makefile.am:

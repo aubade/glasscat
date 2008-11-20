@@ -69,7 +69,6 @@ public class MetadataManager : Object
 		if ( !modified ) return;
 	
 		string output = "";
-		Error err;
 		
 		foreach (string key in keynames) {
 			string val = keys.lookup (key);

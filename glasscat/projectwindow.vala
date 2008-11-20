@@ -1,5 +1,6 @@
 using GLib;
 using Gtk;
+using Gdk;
 
 public class DocumentBuffer : GLib.Object
 {
@@ -16,6 +17,10 @@ public class ProjectWindow : BaseWindow
 	private DocumentBuffer[] document_buffers = new DocumentBuffer[10];
 	private ProjectTree project_tree;
 	
+	const TargetEntry[] targets = {
+		{ "STRING", 0, 0 }
+	};
+	
 	public ProjectWindow (string uri) {
 		this.uri = uri;
 	}
@@ -24,6 +29,9 @@ public class ProjectWindow : BaseWindow
 		this.project = new Project (this.uri);
 	
 		populate_window ();
+		
+		drag_dest_set (this, DestDefaults.ALL, targets, DragAction.COPY);
+		this.drag_data_received += on_drag_data_received;
 		
 		set_default_size (1000, 800);
 		
@@ -80,5 +88,9 @@ public class ProjectWindow : BaseWindow
 		vbox2.pack_start (frame, false, true, 3);
 		
 		pane.add1 (vbox2);
+	}
+	
+	void on_drag_data_received () {
+		stdout.printf ("drag data received\n");
 	}
 }
