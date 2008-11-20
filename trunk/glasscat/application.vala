@@ -103,7 +103,6 @@ public class Application : GLib.Object
 		
 			this.win_count = this.win_count + 1;
 			var w = new ProjectWindow (dialog.get_uri ());
-			//instance.watch_window (w);
 			w.show_all ();
 			window_list.append (w);
 			w.destroy += w => { window_list.remove (w); win_count = win_count - 1; };
@@ -119,12 +118,19 @@ public class Application : GLib.Object
 		}
 	
 		win_count = win_count + 1;
-		var w = new DocumentWindow (uri);
-		//instance.watch_window (w);
+		
+		string mime_type = g_content_type_guess (uri, null, null);
+		BaseWindow w;
+		if (mime_type == "application/x-glasscat-project") {
+			w = new ProjectWindow (uri);
+		} else {
+			w = new DocumentWindow (uri);
+		}
+		
 		w.show_all ();
 		w.present_with_time (time ());
 		window_list.append (w);
-		w.destroy += w => { window_list.remove (w); win_count = win_count - 1; };
+		w.destroy += w => { window_list.remove (w); win_count--; };
 	}
 	
 	static int main (string[] args) {

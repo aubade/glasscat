@@ -23,7 +23,7 @@ public class Document : SourceBuffer
 	
 		this.file_name = uri_to_filename (uri);
 		this.metadata = new MetadataManager (Uri.escape_string (this.file_name, null, false));
-		this.mime_type = g_content_type_guess (this.file_name, null, out result_uncertain);
+		this.mime_type = g_content_type_guess (uri, null, out result_uncertain);
 		
 		if (result_uncertain)
 			this.mime_type = null;
