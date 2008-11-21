@@ -37,6 +37,7 @@
 		<menu action="document">
 			<menuitem action="word-wrap"/>
 		</menu>
+		<placeholder name="project-placeholder" />
 		<menu action="help">
 			<menuitem action="about"/>
 		</menu>

@@ -1,0 +1,11 @@
+<ui>		
+	<menubar name="menubar">
+		<placeholder name="project-placeholder" />
+			<menu action="project">
+			</menu>
+		</placeholder>
+		<menu action="help">
+			<menuitem action="about"/>
+		</menu>
+	</menubar>
+</ui>

@@ -33,6 +33,7 @@ NULL =
 uidir = $(pkgdatadir)
 ui_DATA =               \
 	glasscat-ui.xml \
+	glasscat-project-ui.xml \
 	$(NULL)
 
 if GCONF_SCHEMAS_INSTALL
