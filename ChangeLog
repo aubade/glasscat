@@ -1,3 +1,13 @@
+2008-11-21  Daniel Borgmann  <danielb@openismus.com>
+
+	* data/Makefile.am:
+	* data/glasscat-project-ui.xml:
+	* data/glasscat-ui.xml: 
+	* glasscat/application.vala:
+	* glasscat/projectwindow.vala:
+
+	Add project placeholder and ui definition.
+
 2008-11-20  Daniel Borgmann  <daniel@daniel-laptop>
 
 	* glasscat/application.vala:

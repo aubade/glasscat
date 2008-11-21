@@ -36,7 +36,7 @@ public class ProjectWindow : BaseWindow
 		drag_dest_set (this, DestDefaults.ALL, targets, DragAction.COPY);
 		this.drag_data_received += on_drag_data_received;
 		
-		set_default_size (1000, 800);
+		set_default_size (960, 700);
 		
 		string displayname = Filename.display_basename (Uri.unescape_string (this.uri, ""));
 		set_title (displayname + " - Glasscat");

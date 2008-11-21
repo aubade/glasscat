@@ -120,9 +120,8 @@ public class Application : GLib.Object
 	
 		win_count = win_count + 1;
 		
-		string mime_type = g_content_type_guess (uri, null, null);
 		BaseWindow w;
-		if (mime_type == "application/x-glasscat-project") {
+		if (g_content_type_guess (uri, null, null) == "application/x-glasscat-project") {
 			w = new ProjectWindow (uri);
 		} else {
 			w = new DocumentWindow (uri);
