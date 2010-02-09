@@ -44,7 +44,7 @@ AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
 GNOME_COMPILE_WARNINGS(yes)
 
 AC_CONFIG_FILES([Makefile
-                 glasscat/Makefile
+                 src/Makefile
                  data/Makefile
                  vapi/Makefile])
 

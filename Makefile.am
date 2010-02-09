@@ -2,6 +2,6 @@ NULL =
 
 SUBDIRS =			\
 	data			\
-	glasscat		\
+	src			\
 	vapi			\
 	$(NULL)
