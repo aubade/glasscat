@@ -9,7 +9,7 @@ REQUIRED_AUTOMAKE_VERSION=1.8
 
 (test -f $srcdir/configure.ac \
   && test -f $srcdir/ChangeLog \
-  && test -d $srcdir/glasscat) || {
+  && test -d $srcdir/src) || {
     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
     echo " top-level $PKG_NAME directory"
     exit 1
