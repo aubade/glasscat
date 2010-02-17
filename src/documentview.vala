@@ -36,7 +36,11 @@ public class DocumentView : SourceView
 
 	construct {
 		modify_font (FontDescription.from_string (SystemSettings.get_font ()));
-		GConf.Client.get_default().notify_add ("/desktop/gnome/interface/monospace_font_name", on_font_changed);
+		try {
+			GConf.Client.get_default().notify_add ("/desktop/gnome/interface/monospace_font_name", on_font_changed);
+		} catch (Error e) {
+			stdout.printf ("Failed to add GConf notification: %s", e.message);
+		}
 	
 		this.tab_width = 8;
 		this.insert_spaces_instead_of_tabs = false;
@@ -127,8 +131,6 @@ public class DocumentView : SourceView
 				wrapped = true;
 			}
 		};
-
-		return false;
 	}
 	
 	public new void select_all () {

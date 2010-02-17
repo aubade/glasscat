@@ -22,7 +22,7 @@ public class Application : GLib.Object
 		return config_dir;
 	}
 	
-	[NoArrayLength ()]
+	[CCode (array_length = false)]
 	public void run (string[] args) {
 		Gtk.init (ref args);
 		
@@ -121,7 +121,7 @@ public class Application : GLib.Object
 		win_count = win_count + 1;
 		
 		BaseWindow w;
-		if (g_content_type_guess (uri, null, null) == "application/x-glasscat-project") {
+		if (g_content_type_guess (uri, new uchar[0], null) == "application/x-glasscat-project") {
 			w = new ProjectWindow (uri);
 		} else {
 			w = new DocumentWindow (uri);

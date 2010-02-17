@@ -47,8 +47,21 @@ AM_PROG_VALAC([$VALA_REQUIRED])
 VAPIDIR=`pkg-config --variable=vapidir vala-1.0`
 AC_SUBST(VAPIDIR)
 
-GNOME_COMPILE_WARNINGS(yes)
 
 AC_CONFIG_FILES([Makefile])
 
 AC_OUTPUT
+
+dnl ==========================================================================
+echo "
+                  glasscat $VERSION
+                  =============================
+
+        prefix:                    ${prefix}
+        C compiler:                ${CC}
+        Vala compiler:             ${VALAC}
+        cflags:                    ${CFLAGS}
+        cppflags:                  ${CPPFLAGS}
+        dbus enabled:              ${have_dbus}
+        gconf-schema dir:          $GCONF_SCHEMA_FILE_DIR
+"
