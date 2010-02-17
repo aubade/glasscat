@@ -23,14 +23,19 @@ public class MetadataManager : Object
 		file_name = Application.get_config_dir() + "/metadata/" + hash;
 		
 		if ( FileUtils.test (file_name, FileTest.EXISTS) ) {
-			FileUtils.get_contents (file_name, out contents, null); // FIXME: use async gio?
-			var lines = contents.split ("\n");
+			try {
+				FileUtils.get_contents (file_name, out contents, null); // FIXME: use async gio?
+				
+				var lines = contents.split ("\n");
 			
-			foreach ( string line in lines ) {
-				var keyval = line.split (":");
-				if ( keyval[0] == null || keyval[1] == null )
-					continue;
-				keys.insert (keyval[0], keyval[1]);
+				foreach ( string line in lines ) {
+					var keyval = line.split (":");
+					if ( keyval[0] == null || keyval[1] == null )
+						continue;
+					keys.insert (keyval[0], keyval[1]);
+				}
+			} catch (FileError e) {
+				stdout.printf ("Error while loading metadata: %s\n", e.message);
 			}
 		}
 	}

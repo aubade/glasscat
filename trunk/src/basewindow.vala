@@ -31,7 +31,7 @@ public abstract class BaseWindow : Gtk.Window
 		setup_ui_manager ();
 	}
 	
-	public static Clipboard get_clipboard () {
+	public static new Clipboard get_clipboard () {
 		return clipboard;
 	}
 	

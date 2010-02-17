@@ -23,8 +23,12 @@ public class DocumentWindow : BaseWindow
 		set_title (doc.get_title_string ());
 		
 		// FIXME: should use document mimetype icon (wait for Gtk 2.14 and nicer API)
-		var icon = IconTheme.get_default ().load_icon ("glasscat", 16, (IconLookupFlags)0);
-		set_icon (icon);
+		try {
+			var icon = IconTheme.get_default ().load_icon ("glasscat", 16, (IconLookupFlags)0);
+			set_icon (icon);
+		} catch (Error e) {
+			stdout.printf ("Error while loading icon: %s\n", e.message);
+		}
 	}
 		
 	public override bool is_document (string uri) {
@@ -65,7 +69,7 @@ public class DocumentWindow : BaseWindow
 		m.write ();
 	}
 	
-	private void populate_window () {
+	private new void populate_window () {
 		base.populate_window ();
 		
 		document_view = new DocumentView ();
@@ -74,7 +78,7 @@ public class DocumentWindow : BaseWindow
 		document_box.add (scrolled_window);
 	}
 	
-	private void connect_events () {
+	private new void connect_events () {
 		delete_event += () => { save_spatial_state (); return false; }; 
 		base.connect_events ();
 	}

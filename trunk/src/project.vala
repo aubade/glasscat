@@ -19,6 +19,8 @@ public class Project : GLib.Object
 		
 		try {
 			file.create (FileCreateFlags.NONE, null);
+		} catch (Error e) {
+			stdout.printf ("Error: %s\n", e.message);
 		} catch (IOError e) {
 			if (e is IOError.EXISTS)
 				stdout.printf ("File Exists\n");

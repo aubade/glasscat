@@ -22,7 +22,7 @@ public class Document : SourceBuffer
 	
 		this.file_name = uri_to_filename (uri);
 		this.metadata = new MetadataManager (Uri.escape_string (this.file_name, "", false));
-		this.mime_type = g_content_type_guess (uri, null, out result_uncertain);
+		this.mime_type = g_content_type_guess (uri, new uchar[0], out result_uncertain);
 		
 		if (result_uncertain)
 			this.mime_type = null;
@@ -43,12 +43,22 @@ public class Document : SourceBuffer
 		// TODO: error dialogs, use gio
 		string contents;
 		
-		if ( ! FileUtils.get_contents (file_name, out contents, null) )
+		try {
+			if ( ! FileUtils.get_contents (file_name, out contents, null) )
+				return false;
+		} catch (FileError e) {
+			stdout.printf ("Error while loading document: %s\n", e.message);
 			return false;
+		}
 		
 		if ( ! contents.validate () ) {
 			/* this is lame .. */
-			contents = convert (contents, -1, "UTF-8", "ISO-8859-2", null, null);
+			try {
+				contents = convert (contents, -1, "UTF-8", "ISO-8859-2", null, null);
+			} catch (ConvertError e) {
+				stdout.printf ("Error while converting document: %s\n", e.message);
+				return false;
+			}
 			if ( ! contents.validate () ) {
 				return false;
 			}

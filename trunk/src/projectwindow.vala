@@ -43,12 +43,14 @@ public class ProjectWindow : BaseWindow
 		try {
 			var icon = IconTheme.get_default ().load_icon ("glasscat", 16, (IconLookupFlags)0);
 			set_icon (icon);
-		} catch (GLib.FileError error) {
-			stdout.printf ("Failed to load application icon: %s\n", error.message);
+		} catch (Error e) {
+			stdout.printf ("Error: %s\n", e.message);
+		} catch (GLib.FileError e) {
+			stdout.printf ("Failed to load application icon: %s\n", e.message);
 		}
 	}
 	
-	private void populate_window () {
+	private new void populate_window () {
 		base.populate_window ();
 		
 		/* A hidden notebook with 10 DocumentView buffers. Set DocumentView to the first one. */
