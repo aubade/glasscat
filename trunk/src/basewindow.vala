@@ -77,7 +77,7 @@ public abstract class BaseWindow : Gtk.Window
 		try {
 			ui_manager.add_ui_from_file (GLASSCATDIR + "/glasscat-ui.xml");
 		} catch (GLib.Error e) {
-			stdout.printf ("error: Failed to load UI definition file.\n");
+			stdout.printf ("error: Failed to load UI definition file: %s\n", GLASSCATDIR + "/glasscat-ui.xml");
 		}
 		add_accel_group (ui_manager.get_accel_group ());
 	}
@@ -200,7 +200,7 @@ public abstract class BaseWindow : Gtk.Window
 			"version", VERSION,
 			"license", "Glasscat is free software; you can redistribute it and/or modify \nit under the terms of the GNU General Public License as published by \nthe Free Software Foundation; either version 2 of the License, or \n(at your option) any later version.\n\nGlasscat is distributed in the hope that it will be useful, \nbut WITHOUT ANY WARRANTY; without even the implied warranty of \nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the \nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License \nalong with Glasscat; if not, write to the Free Software Foundation, Inc., \n51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA",
 			"comments", "Text editor with attitude",
-			"copyright", "Copyright © 2006-2008 Daniel Borgmann",
+			"copyright", "Copyright © 2006-2010 Daniel Borgmann",
 			"website", "http://www.glasscat.org/",
 			"website-label", "Visit the Glasscat Homepage"
 		);
@@ -234,7 +234,7 @@ public abstract class BaseWindow : Gtk.Window
 	}
 	
 	private void on_menu_item_select (MenuItem proxy) {
-		Action action = proxy.get_action ();
+		Action action = proxy.get_related_action ();
 		return_if_fail (action != null);
 		
 		if (action.tooltip != null) {
@@ -372,7 +372,7 @@ public abstract class BaseWindow : Gtk.Window
 		}
 	}
 	
-	private bool on_close (GLib.Object o) {
+	private bool on_close (Event e) {
 		return close ();
 	}
 }
