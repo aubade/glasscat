@@ -131,7 +131,7 @@ public class DocumentView : SourceView
 		return false;
 	}
 	
-	public void select_all () {
+	public new void select_all () {
 		return_if_fail (document != null);
 		TextIter s, e;
 		document.get_bounds (out s, out e);

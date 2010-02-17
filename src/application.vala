@@ -66,8 +66,8 @@ public class Application : GLib.Object
 		}
 		
 		if ( win_count > 0 ) {
-			Gtk.AboutDialog.set_url_hook (url_hook, null);
-			Gtk.AboutDialog.set_email_hook (email_hook, null);
+			Gtk.AboutDialog.set_url_hook (url_hook);
+			Gtk.AboutDialog.set_email_hook (email_hook);
 			Gtk.main ();
 		}
 	}

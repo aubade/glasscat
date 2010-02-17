@@ -21,7 +21,6 @@ public class ProjectWindow : BaseWindow
 		{ "STRING", 0, 0 },
 		{ "text/plain", 0, 0},
 		{ "text/uri-list", 0, 0}
-		
 	};
 	
 	public ProjectWindow (string uri) {
@@ -95,5 +94,6 @@ public class ProjectWindow : BaseWindow
 	
 	void on_drag_data_received (ProjectWindow win, Gdk.DragContext context, int x, int y, Gtk.SelectionData selection_data, uint info, uint time_) {
 		stdout.printf ("drag data received: %s\n", selection_data.get_text ());
+		project_tree.add_files (selection_data.get_text ());
 	}
 }

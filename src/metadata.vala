@@ -35,7 +35,7 @@ public class MetadataManager : Object
 		}
 	}
 	
-	public string @get (string key) {
+	public new string @get (string key) {
 		string val = keys.lookup (key);
 		if (val != null) {
 			return val;
@@ -60,7 +60,7 @@ public class MetadataManager : Object
 			return -1;
 	}
 	
-	public void @set (string key, string value) {
+	public new void @set (string key, string value) {
 		keys.replace (key, value);
 		modified = true;
 	}

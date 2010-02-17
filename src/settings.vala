@@ -40,7 +40,7 @@ namespace Settings {
 
 namespace SystemSettings {
 	public static string get_font () {
-		string res;
+		string res = null;
 		try {
 			res = GConf.Client.get_default ().get_string ("/desktop/gnome/interface/monospace_font_name");
 		} catch (GLib.Error error) {

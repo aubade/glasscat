@@ -21,7 +21,7 @@ public class Document : SourceBuffer
 		bool result_uncertain = false;
 	
 		this.file_name = uri_to_filename (uri);
-		this.metadata = new MetadataManager (Uri.escape_string (this.file_name, null, false));
+		this.metadata = new MetadataManager (Uri.escape_string (this.file_name, "", false));
 		this.mime_type = g_content_type_guess (uri, null, out result_uncertain);
 		
 		if (result_uncertain)

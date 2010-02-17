@@ -1,11 +1,12 @@
+AC_PREREQ(2.53)
 AC_INIT([Glasscat], [0.4.0], [daniel.borgmann@gmail.com], [glasscat])
-AM_INIT_AUTOMAKE([dist-bzip2 no-dist-gzip])
+# require automake-1.11 for vala support
+AM_INIT_AUTOMAKE([1.11 subdir-objects])
+AM_SILENT_RULES([yes])
 AC_CONFIG_HEADER(config.h)
+AC_CONFIG_MACRO_DIR([m4])
 
 AC_PROG_CC
-
-AC_PATH_PROG(VALAC, valac, valac)
-AC_SUBST(VALAC)
 
 AC_PATH_PROG(GCONFTOOL, gconftool-2)
 
@@ -41,11 +42,13 @@ AM_GCONF_SOURCE_2
 AC_PROG_LIBTOOL
 AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
 
+# check for vala
+AM_PROG_VALAC([$VALA_REQUIRED])
+VAPIDIR=`pkg-config --variable=vapidir vala-1.0`
+AC_SUBST(VAPIDIR)
+
 GNOME_COMPILE_WARNINGS(yes)
 
-AC_CONFIG_FILES([Makefile
-                 src/Makefile
-                 data/Makefile
-                 vapi/Makefile])
+AC_CONFIG_FILES([Makefile])
 
 AC_OUTPUT
