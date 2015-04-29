@@ -1,0 +1,1 @@
+A source code editor for the GNOME desktop, which explores new interface ideas.
